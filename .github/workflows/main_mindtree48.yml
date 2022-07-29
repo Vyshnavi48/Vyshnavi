@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'Mindtree48'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_785110EA4AD142809FCBACE33A20C459 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2CD21C5CA37247D1B50B05A86ABCEC0B }}
           package: '*.jar'
