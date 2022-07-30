@@ -10,6 +10,10 @@ import com.example.demo.entity.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee,Integer>{
 Employee findByName(String name);
 
+//void save(String salary);
+
+
+
 }
 
 

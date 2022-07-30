@@ -7,14 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Employee;
+import com.example.demo.exception.EmployeeDataException;
 import com.example.demo.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
 	@Autowired
 	private EmployeeRepository repository;
 	
-	public Employee saveEmployee(Employee e) {
+	public Employee saveEmployee(Employee e) throws EmployeeDataException {
+		Employee emp = repository.findById(e.getId()).orElse(null);
+		if(emp==null) {
 		return repository.save(e);
+		}else
+			throw new EmployeeDataException("Employee data already in database!!");
 	}
 	
 	public List<Employee>getEmployee(){
@@ -42,6 +47,16 @@ public class EmployeeService {
 		return list;
 		
 		}
+	
+	public String updateEmployeeBySalary(String salary , Employee e) {
+		repository.save(e);
+		return "updated successfully";
+	}
+
+	public List<Employee> getEmployees() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
 	
 
 	
